@@ -46,9 +46,59 @@ body {
   }
 
   .desktop-shell {
+    display: block;
     background-image: linear-gradient(135deg, rgb(7 12 24 / 0.18), rgb(7 12 24 / 0.08)), url("/images/wallpaper.png");
     background-size: cover;
     background-position: center;
+  }
+
+  .mobile-view {
+    display: none;
+  }
+
+  .desktop-icons {
+    @apply absolute left-6 top-20 z-10 flex flex-col gap-4;
+  }
+
+  .desktop-icon {
+    @apply flex w-20 cursor-pointer flex-col items-center gap-1 rounded-lg p-2 text-center text-xs text-white transition-colors hover:bg-white/15;
+
+    img {
+      @apply size-12 object-contain;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .desktop-view {
+      display: none;
+    }
+
+    .mobile-view {
+      display: block;
+      background-image: linear-gradient(135deg, rgb(7 12 24 / 0.18), rgb(7 12 24 / 0.08)), url("/images/wallpaper.png");
+      background-size: cover;
+      background-position: center;
+    }
+
+    .mobile-view #welcome {
+      @apply px-6;
+    }
+
+    .mobile-view #welcome h1 {
+      @apply text-3xl;
+    }
+
+    .mobile-view #welcome h1 span {
+      @apply text-4xl;
+    }
+
+    .mobile-view #welcome > p:not(.welcome-kicker):not(.small-screen) {
+      @apply text-base;
+    }
+
+    .mobile-view #welcome > p:not(.welcome-kicker):not(.small-screen) span {
+      @apply text-lg;
+    }
   }
 
   .desktop-shell::before {
