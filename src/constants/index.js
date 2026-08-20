@@ -1,3 +1,86 @@
+export const RESUME_DATA = {
+  profile: {
+    name: "Mohammad Faiz Rabbani",
+    role: "Full Stack Engineer",
+    summary: "Developer building reliable digital products with Java, Spring Boot, React, and cloud-native systems.",
+  },
+  experience: [
+    {
+      company: "DAISYON TECHNOLOGIES",
+      role: "Software Engineer",
+      period: "August 2025 - June 2026",
+      location: "Patna",
+      points: [
+        "Developed full-stack applications using Java, Spring Boot, React, and PostgreSQL.",
+        "Reduced average response time by approximately 30% through API optimization.",
+        "Configured production servers and optimized deployment pipelines.",
+      ],
+      tech: ["Java", "Spring Boot", "React", "PostgreSQL", "Docker"],
+    },
+    {
+      company: "PROPERTYHUB",
+      role: "Full Stack Developer",
+      period: "December 2023 - June 2025",
+      points: [
+        "Achieved 99.9% uptime for a real estate platform supporting 10k+ concurrent users.",
+        "Integrated Elasticsearch, reducing query response time by 40%.",
+        "Implemented RabbitMQ for notifications and Redis for caching.",
+      ],
+      tech: ["Spring Boot", "React", "PostgreSQL", "Elasticsearch", "RabbitMQ", "Kubernetes"],
+    },
+    {
+      company: "RATEGAIN TRAVEL TECHNOLOGIES",
+      role: "Software Development Engineer",
+      period: "July 2022 - November 2023",
+      points: [
+        "Handled 30M+ daily requests using Spring WebFlux with asynchronous processing.",
+        "Built Change Data Capture workflows using Kafka for real-time sync.",
+        "Deployed microservices on AWS EKS with Kubernetes.",
+      ],
+      tech: ["Spring WebFlux", "Kafka", "AWS EKS", "Redis", "Bucket4j"],
+    },
+  ],
+  education: [
+    {
+      institution: "Computer Science and Engineering",
+      qualification: "Software Engineering",
+      period: "Academic foundation",
+    },
+  ],
+  certifications: [
+    {
+      title: "Cloud-native application development",
+      issuer: "Professional development",
+      period: "Current focus",
+    },
+  ],
+};
+
+export const FINDER_NAVIGATION = [
+  { id: "about", label: "About Me", icon: "user" },
+  { id: "experience", label: "Experience", icon: "briefcase" },
+  { id: "education", label: "Education", icon: "graduation" },
+  { id: "certifications", label: "Certifications", icon: "award" },
+];
+
+export const FINDER_GROUP_LABEL = "Favorites";
+
+export const TERMINAL_DATA = {
+  prompt: "faiz@macbook ~ %",
+  welcome: [
+    "Welcome to Mohammad-OS Terminal v1.0.0",
+    'Type "help" to see available commands.',
+  ],
+  commands: {
+    help: "Available: about, skills, experience, clear, neofetch, contact",
+    about: "Mohammad Faiz Rabbani: Full Stack Engineer specializing in Java and Spring Boot.",
+    skills: "Java, Spring Boot, React, PostgreSQL, Docker, Kubernetes, AWS, Kafka...",
+    experience: "4+ years building scalable full-stack and cloud-native systems.",
+    contact: "Open the Contact app to connect with Mohammad Faiz Rabbani.",
+    neofetch: "OS: Faiz-macOS-v1\nRole: Full Stack Developer\nExp: 4+ Years\nLoc: Saudi Arabia",
+  },
+};
+
 const navLinks = [
   {
     id: 1,
@@ -71,6 +154,18 @@ const dockApps = [
     name: "Archive", // was "Trash"
     icon: "trash.png",
     canOpen: false,
+  },
+  {
+    id: "vscode",
+    name: "VS Code",
+    icon: "terminal.png",
+    canOpen: true,
+  },
+  {
+    id: "settings",
+    name: "Settings",
+    iconPath: "/icons/mode.svg",
+    canOpen: true,
   },
 ];
 

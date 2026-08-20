@@ -1,8 +1,12 @@
 import { useState } from "react";
 import { spotlightItems } from "#constants/spotlight";
+import { useWindowStore } from "#store/windowStore";
 
-const Spotlight = ({ isOpen, onClose, onOpen }) => {
+const Spotlight = () => {
   const [search, setSearch] = useState("");
+  const isOpen = useWindowStore((state) => state.isSpotlightOpen);
+  const closeSpotlight = useWindowStore((state) => state.closeSpotlight);
+  const openWindow = useWindowStore((state) => state.openWindow);
   const filteredItems = spotlightItems.filter((item) =>
     item.title.toLowerCase().includes(search.toLowerCase())
   );
@@ -10,8 +14,8 @@ const Spotlight = ({ isOpen, onClose, onOpen }) => {
   if (!isOpen) return null;
 
   return (
-    <section className="spotlight-overlay" role="dialog" aria-label="Spotlight Search">
-      <div className="spotlight-panel">
+    <section className="spotlight-overlay" role="dialog" aria-label="Spotlight Search" onClick={closeSpotlight}>
+      <div className="spotlight-panel" onClick={(event) => event.stopPropagation()}>
         <div className="spotlight-search-row">
           <img src="/icons/search.svg" alt="" />
           <input
@@ -22,7 +26,7 @@ const Spotlight = ({ isOpen, onClose, onOpen }) => {
             placeholder="Search this portfolio..."
             aria-label="Search this portfolio"
           />
-          <button type="button" onClick={onClose} aria-label="Close Spotlight">Esc</button>
+          <button type="button" onClick={closeSpotlight} aria-label="Close Spotlight">Esc</button>
         </div>
         <div className="spotlight-results">
           {filteredItems.map((item) => (
@@ -31,8 +35,12 @@ const Spotlight = ({ isOpen, onClose, onOpen }) => {
               className="spotlight-result"
               key={item.id}
               onClick={() => {
-                onOpen(item.id);
-                onClose();
+                if (item.id === "resume") {
+                  window.open("/files/resume.pdf", "_blank", "noopener,noreferrer");
+                } else {
+                  openWindow(item.id);
+                }
+                closeSpotlight();
               }}
             >
               <img src={item.icon} alt="" />

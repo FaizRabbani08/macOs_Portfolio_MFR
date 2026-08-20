@@ -2,6 +2,15 @@ import { create } from "zustand";
 
 export const useWindowStore = create((set) => ({
   windows: {},
+  bootComplete: false,
+  isSpotlightOpen: false,
+
+  setBootComplete: (bootComplete) => set({ bootComplete }),
+
+  toggleSpotlight: () =>
+    set((state) => ({ isSpotlightOpen: !state.isSpotlightOpen })),
+
+  closeSpotlight: () => set({ isSpotlightOpen: false }),
 
   openWindow: (id) =>
     set((state) => {

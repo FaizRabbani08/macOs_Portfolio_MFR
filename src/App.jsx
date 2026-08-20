@@ -1,82 +1,44 @@
-import { useState } from "react";
-
-import {
-  Navbar,
-  Welcome,
-  Dock,
-  WindowManager,
-  Spotlight,
-} from "./components";
-
+import { useEffect } from "react";
+import { BootScreen, Desktop, MobileLayout } from "./components";
 import { useWindowStore } from "#store/windowStore";
-import { useKeyboardShortcuts } from "#hooks/useKeyboardShortcuts";
+import { useSettingsStore } from "#store/settingsStore";
+import { useMediaQuery } from "#hooks/useMediaQuery";
 
 function App() {
-  const [isDark, setIsDark] = useState(false);
-  const [isSpotlightOpen, setIsSpotlightOpen] = useState(false);
+  const toggleSpotlight = useWindowStore((state) => state.toggleSpotlight);
+  const closeSpotlight = useWindowStore((state) => state.closeSpotlight);
+  const wallpaper = useSettingsStore((state) => state.wallpaper);
+  const theme = useSettingsStore((state) => state.theme);
+  const bootComplete = useWindowStore((state) => state.bootComplete);
+  const isMobile = useMediaQuery("(max-width: 768px)");
 
-  const openWindow = useWindowStore(
-    (state) => state.openWindow
-  );
-  const windows = useWindowStore((state) => state.windows);
-  const closeWindow = useWindowStore((state) => state.closeWindow);
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
+        event.preventDefault();
+        toggleSpotlight();
+      }
 
-  const openSpotlight = () => setIsSpotlightOpen(true);
+      if (event.key === "Escape") closeSpotlight();
+    };
 
-  const handleOpenWindow = (id) => {
-    if (id === "search") {
-      openSpotlight();
-      return;
-    }
-
-    if (id === "resume") {
-      window.open("/files/resume.pdf", "_blank", "noopener,noreferrer");
-      return;
-    }
-
-    openWindow(id);
-  };
-
-  const closeActiveWindow = () => {
-    if (isSpotlightOpen) {
-      setIsSpotlightOpen(false);
-      return;
-    }
-
-    const activeWindow = Object.values(windows)
-      .filter((windowState) => windowState?.isOpen)
-      .sort((first, second) => second.zIndex - first.zIndex)[0];
-
-    if (activeWindow) closeWindow(activeWindow.id);
-  };
-
-  useKeyboardShortcuts({ openSpotlight, closeActiveWindow });
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [closeSpotlight, toggleSpotlight]);
 
   return (
-    <main
-      className={`desktop-shell ${
-        isDark ? "theme-dark" : ""
-      }`}
+    <div
+      className={`app-root theme-${theme}`}
+      style={{ backgroundImage: `url("${wallpaper}")` }}
     >
-      <Navbar
-        onOpen={handleOpenWindow}
-        onToggleTheme={() =>
-          setIsDark((current) => !current)
-        }
-      />
-
-      <Welcome />
-
-      <WindowManager />
-
-      <Spotlight
-        isOpen={isSpotlightOpen}
-        onClose={() => setIsSpotlightOpen(false)}
-        onOpen={handleOpenWindow}
-      />
-
-      <Dock onOpen={handleOpenWindow} />
-    </main>
+      {!bootComplete ? (
+        <BootScreen />
+      ) : isMobile ? (
+        <MobileLayout />
+      ) : (
+        <Desktop wallpaper={wallpaper} theme={theme} />
+      )}
+    </div>
   );
 }
 

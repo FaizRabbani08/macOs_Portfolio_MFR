@@ -1,6 +1,10 @@
 import Window from "./Window";
 import PortfolioWindow from "./PortfolioWindow";
 import { useWindowStore } from "#store/windowStore";
+import Finder from "#windows/Finder";
+import Terminal from "#windows/Terminal";
+import VSCode from "#windows/VSCode";
+import Settings from "#windows/Settings";
 
 const WINDOW_CONFIG = {
   finder: {
@@ -25,6 +29,14 @@ const WINDOW_CONFIG = {
 
   search: {
     title: "Spotlight Search",
+  },
+
+  vscode: {
+    title: "Visual Studio Code",
+  },
+
+  settings: {
+    title: "System Settings",
   },
 };
 
@@ -53,9 +65,7 @@ const WindowManager = () => {
               id={id}
               title={config.title}
             >
-              <PortfolioWindow
-                type={id}
-              />
+              {id === "finder" ? <Finder /> : id === "terminal" ? <Terminal /> : id === "vscode" ? <VSCode /> : id === "settings" ? <Settings /> : <PortfolioWindow type={id} />}
             </Window>
           );
         }

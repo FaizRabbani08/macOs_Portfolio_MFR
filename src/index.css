@@ -11,6 +11,16 @@ body {
   background: #17202f;
 }
 
+#root,
+.app-root {
+  width: 100%;
+  height: 100%;
+}
+
+.app-root {
+  @apply relative overflow-hidden bg-cover bg-center text-white;
+}
+
 @theme {
   --font-georama: "Georama", sans-serif;
   --font-roboto: "Roboto Mono", monospace;
@@ -67,6 +77,21 @@ body {
       @apply size-12 object-contain;
     }
   }
+
+  .boot-screen {
+    @apply fixed inset-0 z-[5000] flex items-center justify-center bg-black text-white;
+  }
+
+  .boot-content {
+    @apply flex w-full max-w-[250px] flex-col items-center gap-12;
+  }
+
+  .boot-logo { @apply mb-4; }
+  .boot-progress { @apply h-1 w-full overflow-hidden rounded-full bg-[#333]; }
+  .boot-progress > div { @apply h-full w-0 bg-white shadow-[0_0_10px_rgba(255,255,255,0.5)]; }
+  .boot-copy { @apply text-center; }
+  .boot-copy h1 { @apply text-xl font-medium uppercase tracking-widest opacity-80; }
+  .boot-copy p { @apply mt-2 text-[10px] uppercase tracking-widest text-white/40; }
 
   @media (max-width: 640px) {
     .desktop-view {
@@ -361,6 +386,134 @@ body {
   @apply px-3 py-6 text-center text-sm text-gray-500;
 }
 
+.vscode-app {
+  @apply flex min-h-full bg-[#1e1e1e] font-sans text-sm text-white;
+}
+
+.vscode-activity-bar {
+  @apply flex w-12 flex-none flex-col items-center gap-6 border-r border-white/5 py-4 text-white/40;
+}
+
+.vscode-activity-bar .is-active {
+  @apply text-white;
+}
+
+.vscode-activity-bottom {
+  @apply mt-auto;
+}
+
+.vscode-sidebar {
+  @apply w-52 flex-none border-r border-white/5 bg-[#252526] p-2;
+}
+
+.vscode-sidebar > p {
+  @apply mb-2 px-2 text-[11px] font-bold uppercase text-white/40;
+}
+
+.vscode-folder {
+  @apply flex items-center gap-2 px-2 py-1 text-white/80;
+}
+
+.vscode-folder svg {
+  @apply text-sky-400;
+}
+
+.vscode-file {
+  @apply flex w-full cursor-pointer items-center gap-2 py-1 pl-6 text-left text-white/60 transition-colors hover:bg-white/5;
+}
+
+.vscode-file.is-active {
+  @apply bg-sky-500/20 text-white;
+}
+
+.vscode-file svg {
+  @apply text-orange-400;
+}
+
+.vscode-editor {
+  @apply flex min-w-0 flex-1 flex-col;
+}
+
+.vscode-tab {
+  @apply flex h-9 items-center border-t border-sky-500 bg-[#1e1e1e] px-4 text-white/80;
+}
+
+.vscode-code {
+  @apply min-h-0 flex-1 overflow-auto;
+}
+
+.settings-app {
+  @apply flex min-h-full bg-slate-950 text-white;
+}
+
+.settings-sidebar {
+  @apply flex w-48 flex-none flex-col gap-1 border-r border-white/10 bg-white/5 p-4;
+}
+
+.settings-nav-item {
+  @apply flex items-center gap-3 rounded-lg px-3 py-2 text-left text-sm text-white/60 transition-colors hover:bg-white/10;
+}
+
+.settings-nav-item.is-active {
+  @apply bg-white/10 text-white;
+}
+
+.settings-nav-bottom {
+  @apply mt-auto;
+}
+
+.settings-content {
+  @apply min-w-0 flex-1 overflow-y-auto p-8;
+}
+
+.settings-content h3 {
+  @apply mb-6 text-2xl font-bold text-white;
+}
+
+.settings-content h3:not(:first-child) {
+  @apply mt-12;
+}
+
+.wallpaper-grid {
+  @apply grid grid-cols-2 gap-4;
+}
+
+.wallpaper-option {
+  @apply relative cursor-pointer text-center;
+}
+
+.wallpaper-option img {
+  @apply h-24 w-full rounded-lg border-2 border-transparent object-cover transition-all;
+}
+
+.wallpaper-option:hover img {
+  @apply scale-[1.02];
+}
+
+.wallpaper-option span {
+  @apply mt-2 block text-xs text-white/60 transition-colors;
+}
+
+.wallpaper-option:hover span {
+  @apply text-white;
+}
+
+.wallpaper-option i {
+  @apply absolute right-2 top-2 rounded-full bg-sky-500 p-0.5 not-italic;
+}
+
+.theme-options {
+  @apply flex gap-4;
+}
+
+.theme-options button {
+  @apply flex-1 rounded-xl border-2 border-white/10 bg-white/5 p-4 text-white transition-all;
+}
+
+.theme-options button.is-selected {
+  @apply border-sky-500 bg-sky-500/10;
+}
+
 .window-header h2 {
   @apply flex-1
     text-center
@@ -379,6 +532,97 @@ body {
 .window-content {
   @apply overflow-auto
     max-h-[calc(75vh-50px)];
+}
+
+.finder-app {
+  @apply flex min-h-full bg-slate-950/90 text-white;
+}
+
+.finder-sidebar {
+  @apply flex w-48 flex-none flex-col gap-2 border-r border-white/10 bg-white/5 p-4;
+}
+
+.finder-sidebar-title {
+  @apply mb-2 px-2 text-[11px] font-bold uppercase tracking-wider text-white/40;
+}
+
+.finder-nav-item {
+  @apply flex cursor-pointer items-center gap-3 rounded-lg px-2 py-2 text-left text-sm text-white/70 transition-colors hover:bg-white/10;
+}
+
+.finder-nav-item.is-active {
+  @apply bg-sky-600 text-white;
+}
+
+.finder-content {
+  @apply min-w-0 flex-1 overflow-y-auto p-6;
+}
+
+.finder-list {
+  @apply flex flex-col gap-8;
+}
+
+.finder-entry {
+  @apply border-l-2 border-sky-400 pl-4;
+}
+
+.finder-entry h3,
+.finder-panel h3 {
+  @apply text-lg font-bold text-white;
+}
+
+.finder-entry-meta {
+  @apply mt-1 text-sm text-sky-300;
+}
+
+.finder-entry ul {
+  @apply mt-3 space-y-2;
+}
+
+.finder-entry li,
+.finder-panel > p:last-child {
+  @apply text-sm leading-relaxed text-white/70;
+}
+
+.finder-entry li::before {
+  content: "• ";
+  @apply text-sky-300;
+}
+
+.finder-tech-list {
+  @apply mt-4 flex flex-wrap gap-2;
+}
+
+.finder-tech-list span {
+  @apply rounded border border-white/10 bg-white/10 px-2 py-1 text-[10px] text-white/80;
+}
+
+.finder-panel {
+  @apply max-w-2xl space-y-4;
+}
+
+.terminal-app {
+  @apply min-h-full overflow-y-auto bg-[#1e1e1e] p-4 font-mono text-sm text-white;
+}
+
+.terminal-line {
+  @apply mb-1 whitespace-pre-wrap;
+}
+
+.terminal-line.input {
+  @apply text-green-400;
+}
+
+.terminal-input-row {
+  @apply flex items-center gap-2;
+}
+
+.terminal-input-row span {
+  @apply whitespace-nowrap text-green-400;
+}
+
+.terminal-input-row input {
+  @apply min-w-0 flex-1 border-none bg-transparent text-white outline-none;
 }
 
 .window-maximized .window-content {
@@ -683,11 +927,6 @@ body {
 
   .portfolio-window {
     @apply absolute z-40 overflow-hidden rounded-xl border border-white/60 bg-white/90 text-gray-800 shadow-2xl backdrop-blur-2xl;
-    width: min(78vw, 920px);
-    left: 50%;
-    top: 52%;
-    transform: translate(-50%, -50%);
-    animation: window-in 0.35s cubic-bezier(.2,.8,.2,1) both;
   }
 
   .window-finder { @apply max-h-[76vh]; }
@@ -748,9 +987,41 @@ body {
   .theme-dark nav { @apply bg-gray-900/75 text-white; }
   .theme-dark nav time, .theme-dark nav ul button { @apply text-white; }
 
-  @keyframes window-in {
-    from { opacity: 0; transform: translate(-50%, -47%) scale(.96); }
-    to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  .mobile-layout {
+    @apply relative flex h-full min-h-dvh w-full flex-col overflow-hidden bg-cover bg-center p-6 pt-16;
+  }
+
+  .mobile-status-bar {
+    @apply fixed left-0 right-0 top-0 z-[1001] flex h-12 items-center justify-between px-8;
+  }
+
+  .mobile-status-bar > span { @apply text-sm font-bold; }
+  .mobile-status-bar > div { @apply flex items-center gap-1.5; }
+  .mobile-app-grid { @apply grid grid-cols-4 gap-x-4 gap-y-8; }
+  .mobile-app-grid > button { @apply flex flex-col items-center gap-1 text-[10px] font-medium text-white; }
+  .mobile-app-grid > button:active, .mobile-dock button:active { transform: scale(0.9); }
+  .mobile-app-icon { @apply flex size-14 items-center justify-center rounded-[1.2rem] text-white shadow-lg transition-transform; }
+  .mobile-dock { @apply mt-auto mb-4 flex items-center justify-between rounded-[2.5rem] border border-white/10 bg-white/20 p-4 shadow-2xl backdrop-blur-2xl; }
+  .mobile-dock button { @apply cursor-pointer; }
+
+  @media (max-width: 768px) {
+    .desktop-view { display: none; }
+    .portfolio-window {
+      left: 0 !important;
+      top: 10vh !important;
+      width: 100vw !important;
+      height: 90vh !important;
+      min-width: 0 !important;
+      min-height: 0 !important;
+      max-height: none !important;
+      border-radius: 20px 20px 0 0;
+      transform: none !important;
+    }
+    .portfolio-window .window-resize-handle { display: none; }
+    .portfolio-window .window-header { cursor: default; }
+    .portfolio-window .window-content { max-height: calc(90vh - 44px); }
+    .finder-sidebar, .settings-sidebar, .vscode-sidebar { width: 38%; }
+    .settings-content { padding: 1.25rem; }
   }
 
   @media (max-width: 640px) {

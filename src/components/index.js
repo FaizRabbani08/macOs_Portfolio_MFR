@@ -8,5 +8,7 @@ import DesktopIcons from './DesktopIcons';
 import MobileDesktop from './MobileDesktop';
 import WindowManager from './WindowManager';
 import Spotlight from './Spotlight';
+import BootScreen from './BootScreen';
+import MobileLayout from './MobileLayout';
 
-export { Navbar, Welcome, Dock, PortfolioWindow, Window, Desktop, DesktopIcons, MobileDesktop, WindowManager, Spotlight };
+export { Navbar, Welcome, Dock, PortfolioWindow, Window, Desktop, DesktopIcons, MobileDesktop, WindowManager, Spotlight, BootScreen, MobileLayout };
