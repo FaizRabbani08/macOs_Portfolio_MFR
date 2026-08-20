@@ -46,9 +46,59 @@ body {
   }
 
   .desktop-shell {
+    display: block;
     background-image: linear-gradient(135deg, rgb(7 12 24 / 0.18), rgb(7 12 24 / 0.08)), url("/images/wallpaper.png");
     background-size: cover;
     background-position: center;
+  }
+
+  .mobile-view {
+    display: none;
+  }
+
+  .desktop-icons {
+    @apply absolute left-6 top-20 z-10 flex flex-col gap-4;
+  }
+
+  .desktop-icon {
+    @apply flex w-20 cursor-pointer flex-col items-center gap-1 rounded-lg p-2 text-center text-xs text-white transition-colors hover:bg-white/15;
+
+    img {
+      @apply size-12 object-contain;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .desktop-view {
+      display: none;
+    }
+
+    .mobile-view {
+      display: block;
+      background-image: linear-gradient(135deg, rgb(7 12 24 / 0.18), rgb(7 12 24 / 0.08)), url("/images/wallpaper.png");
+      background-size: cover;
+      background-position: center;
+    }
+
+    .mobile-view #welcome {
+      @apply px-6;
+    }
+
+    .mobile-view #welcome h1 {
+      @apply text-3xl;
+    }
+
+    .mobile-view #welcome h1 span {
+      @apply text-4xl;
+    }
+
+    .mobile-view #welcome > p:not(.welcome-kicker):not(.small-screen) {
+      @apply text-base;
+    }
+
+    .mobile-view #welcome > p:not(.welcome-kicker):not(.small-screen) span {
+      @apply text-lg;
+    }
   }
 
   .desktop-shell::before {
@@ -170,6 +220,14 @@ body {
     }
 
     .dock-icon + span { @apply pointer-events-none; }
+
+    .dock-item {
+      @apply relative flex flex-col items-center;
+    }
+
+    .dock-indicator {
+      @apply absolute -bottom-1 size-1.5 rounded-full bg-black/70;
+    }
   }
 
   #window-controls {
@@ -191,6 +249,161 @@ body {
   #window-header {
     @apply flex items-center justify-between px-4 py-3 rounded-t-lg bg-gray-50 border-b border-gray-200 select-none text-sm text-gray-400;
   }
+.portfolio-window {
+  @apply absolute
+    top-0
+    left-0
+    w-[min(900px,calc(100vw-40px))]
+    max-h-[75vh]
+    bg-white
+    rounded-xl
+    overflow-hidden
+    shadow-2xl
+    drop-shadow-2xl;
+}
+
+.window-maximized {
+  @apply top-12
+    left-4
+    right-4
+    bottom-4
+    translate-x-0
+    w-auto
+    max-h-none;
+}
+
+.window-header {
+  @apply flex
+    items-center
+    justify-between
+    px-4
+    py-3
+    bg-gray-50
+    border-b
+    border-gray-200
+    select-none;
+  cursor: grab;
+}
+
+.window-header:active {
+  cursor: grabbing;
+}
+
+.portfolio-window.is-dragging {
+  user-select: none;
+}
+
+.portfolio-window.is-resizing {
+  user-select: none;
+}
+
+.window-resize-handle {
+  @apply absolute bottom-0 right-0 z-10 size-5 cursor-nwse-resize;
+  background: linear-gradient(135deg, transparent 50%, rgb(100 116 139 / 0.4) 50%);
+}
+
+.spotlight-overlay {
+  @apply fixed inset-0 z-[100] flex items-start justify-center pt-24;
+  background: rgb(15 23 42 / 0.22);
+  backdrop-filter: blur(8px);
+}
+
+.spotlight-panel {
+  @apply w-[min(620px,calc(100vw-32px))] overflow-hidden rounded-2xl border border-white/40 bg-white/90 shadow-2xl;
+  backdrop-filter: blur(24px) saturate(140%);
+}
+
+.spotlight-search-row {
+  @apply flex items-center gap-3 border-b border-gray-200/80 px-5 py-4;
+
+  img {
+    @apply size-5 opacity-60;
+  }
+
+  input {
+    @apply min-w-0 flex-1 bg-transparent text-lg text-gray-800 outline-none placeholder:text-gray-400;
+  }
+
+  button {
+    @apply rounded-md bg-gray-200/80 px-2 py-1 text-xs text-gray-500;
+  }
+}
+
+.spotlight-results {
+  @apply space-y-1 p-2;
+}
+
+.spotlight-result {
+  @apply flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left transition-colors hover:bg-sky-100/80;
+
+  img {
+    @apply size-8 object-contain;
+  }
+
+  span {
+    @apply flex min-w-0 flex-1 flex-col;
+  }
+
+  strong {
+    @apply truncate text-sm font-semibold text-gray-800;
+  }
+
+  small {
+    @apply truncate text-xs text-gray-500;
+  }
+
+  b {
+    @apply text-gray-400;
+  }
+}
+
+.spotlight-empty {
+  @apply px-3 py-6 text-center text-sm text-gray-500;
+}
+
+.window-header h2 {
+  @apply flex-1
+    text-center
+    font-semibold
+    text-sm
+    text-gray-700;
+}
+
+.window-meta {
+  @apply text-xs
+    text-gray-400
+    w-24
+    text-right;
+}
+
+.window-content {
+  @apply overflow-auto
+    max-h-[calc(75vh-50px)];
+}
+
+.window-maximized .window-content {
+  @apply max-h-[calc(100vh-100px)];
+}
+
+#window-controls {
+  @apply flex items-center gap-2 w-24;
+}
+
+#window-controls button {
+  @apply size-3.5 rounded-full cursor-pointer;
+}
+
+#window-controls .close {
+  @apply bg-[#ff6157];
+}
+
+#window-controls .minimize {
+  @apply bg-[#ffc030];
+}
+
+#window-controls .maximize {
+  @apply bg-[#2acb42];
+}
 
   #safari {
     @apply w-4xl absolute top-40 left-2/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;

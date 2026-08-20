@@ -14,6 +14,8 @@ export default defineConfig({
       '#components': resolve(__dirname, 'src/components'),
       '#constants': resolve(__dirname, 'src/constants'),
       '#store': resolve(__dirname, 'src/store'),
+      '#hooks': resolve(__dirname, 'src/hooks'),
+      '#utils': resolve(__dirname, 'src/utils'),
       '#hoc': resolve(__dirname, 'src/hoc'),
       '#windows': resolve(__dirname, 'src/windows'),
     },
