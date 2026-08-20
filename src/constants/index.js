@@ -14,7 +14,6 @@ const navLinks = [
     name: "Resume",
     type: "resume",
   },
-  
 ];
 
 const navIcons = [
@@ -34,8 +33,6 @@ const navIcons = [
     id: 4,
     img: "/icons/mode.svg",
   },
-
-
 ];
 
 const dockApps = [
