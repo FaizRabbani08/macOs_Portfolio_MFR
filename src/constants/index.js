@@ -1,8 +1,30 @@
+// Transitional compatibility module. New code should import from focused modules.
+export * from "./apps";
+export * from "./projects";
+export * from "./skills";
+export * from "./socials";
+export * from "./gallery";
+
 export const RESUME_DATA = {
   profile: {
     name: "Mohammad Faiz Rabbani",
-    role: "Full Stack Engineer",
-    summary: "Developer building reliable digital products with Java, Spring Boot, React, and cloud-native systems.",
+    role: "Full Stack & Cloud Engineer | 4+ Years Experience",
+    summary: "I am an experienced Full Stack Developer with over 4 years of hands-on expertise in building scalable, high-performance web applications and distributed systems. Holding a B.Tech in Computer Science & Engineering from IIIT Agartala, I bridge the gap between complex backend architectures, modern frontend interfaces, and cloud infrastructure.",
+    specialties: [
+      { title: "Backend Architectures & Microservices", description: "Specialized in Java, Spring Boot, Spring WebFlux, and building high-throughput REST APIs handling tens of millions of daily requests with sub-second latency." },
+      { title: "Modern Frontend Systems", description: "Experienced in building responsive, user-friendly client interfaces with React." },
+      { title: "Cloud & DevOps Engineering", description: "Proficient in containerized deployments using Docker and Kubernetes (AWS EKS), alongside event-driven streaming with Apache Kafka and caching solutions using Redis." },
+      { title: "Data & Machine Learning", description: "Strong foundation in PostgreSQL, MySQL, MongoDB, and machine learning pipelines using Python, Scikit-Learn, and XGBoost." },
+    ],
+    careerHighlights: [
+      "PropertyHub: Built a scalable real estate platform supporting 10,000+ concurrent users with 99.9% uptime and improved search latency by 40% using Elasticsearch.",
+      "RateGain Travel Technologies: Developed backend services for high-throughput travel systems processing 30M+ daily requests using non-blocking microservices architectures.",
+      "Daisyon Technologies: Engineered full-stack web applications and optimized database and API queries to cut average response times by 30%.",
+    ],
+    beyondCoding: [
+      "Leadership: Served as President of the Ek Bharat Shreshtha Bharat Club and as Training & Placement Coordinator at NIT/IIIT Agartala.",
+      "Academic Excellence: Selected for Rahmani Super 30 (top 30 out of 100,000 applicants) and ranked in the top 2.33% nationwide in JEE Main.",
+    ],
   },
   experience: [
     {
@@ -42,9 +64,31 @@ export const RESUME_DATA = {
   ],
   education: [
     {
-      institution: "Computer Science and Engineering",
-      qualification: "Software Engineering",
-      period: "Academic foundation",
+      institution: "Indian Institute of Information Technology, Agartala (IIIT Agartala)",
+      qualification: "Bachelor of Technology (B.Tech) in Computer Science & Engineering",
+      location: "Agartala, India",
+      overview: "Specialized in Software Engineering, Distributed Systems, Microservices Architecture, and Applied Machine Learning. Developed core competencies in Data Structures & Algorithms (DSA), System Design (HLD/LLD), and Cloud-Native Application Development.",
+      strengths: [
+        "Computer Science Foundations: Object-Oriented Programming (OOP), Database Management Systems (DBMS), Operating Systems, Computer Networks, and System Architecture.",
+        "Advanced Electives & Practical Focus: Artificial Intelligence, Machine Learning, Feature Engineering, and Cybersecurity (Static Malware Analysis).",
+      ],
+      capstone: {
+        title: "Machine Learning-Based Malware Detection System",
+        period: "January 2022 - May 2022",
+        tech: ["Python", "Flask", "Scikit-Learn", "XGBoost", "Pandas", "NumPy", "Joblib", "PEfile"],
+        description: "Designed and implemented an end-to-end malware detection platform that classifies Windows PE binaries using static analysis techniques.",
+        highlights: [
+          "Processed over 138,000 executable samples and engineered 54 PE-header and entropy-based features.",
+          "Applied feature selection to narrow down the top 14 discriminative features, improving computational efficiency without sacrificing accuracy.",
+          "Developed a real-time Flask inference REST API connected to serialized Random Forest, XGBoost, and AdaBoost models.",
+        ],
+      },
+      achievements: [
+        "Training & Placement Coordinator (NIT Agartala / IIIT Agartala): Coordinated placement drives, recruiter interactions, and onboarding sessions.",
+        "President - Ek Bharat Shreshtha Bharat Club (EBSB): Led operations and organized student engagement events across departments.",
+        "JEE Main Top Achiever: Ranked in the top 2.33% out of 1.13 million candidates nationwide.",
+        "Rahmani Super 30 Scholar: Selected in the top 30 out of 100,000+ applicants through a competitive four-stage selection process.",
+      ],
     },
   ],
   certifications: [
@@ -72,10 +116,11 @@ export const TERMINAL_DATA = {
     'Type "help" to see available commands.',
   ],
   commands: {
-    help: "Available: about, skills, experience, clear, neofetch, contact",
-    about: "Mohammad Faiz Rabbani: Full Stack Engineer specializing in Java and Spring Boot.",
+    help: "Available: about, skills, experience, education, clear, neofetch, contact",
+    about: "Mohammad Faiz Rabbani: Full Stack & Cloud Engineer with 4+ years of experience in Java, Spring Boot, React, and cloud-native systems.",
     skills: "Java, Spring Boot, React, PostgreSQL, Docker, Kubernetes, AWS, Kafka...",
     experience: "4+ years building scalable full-stack and cloud-native systems.",
+    education: "B.Tech in Computer Science & Engineering from IIIT Agartala. Open Finder > Education for the full academic profile.",
     contact: "Open the Contact app to connect with Mohammad Faiz Rabbani.",
     neofetch: "OS: Faiz-macOS-v1\nRole: Full Stack Developer\nExp: 4+ Years\nLoc: Saudi Arabia",
   },
@@ -158,7 +203,7 @@ const dockApps = [
   {
     id: "vscode",
     name: "VS Code",
-    icon: "terminal.png",
+    icon: "vscode.webp",
     canOpen: true,
   },
   {
@@ -167,30 +212,35 @@ const dockApps = [
     iconPath: "/icons/mode.svg",
     canOpen: true,
   },
+  {
+    id: "faizai",
+    name: "FaizAI",
+    iconPath: "/images/faizai.png",
+    canOpen: true,
+  },
 ];
 
 const blogPosts = [
   {
     id: 1,
-    date: "Sep 2, 2025",
-    title:
-      "TypeScript Explained: What It Is, Why It Matters, and How to Master It",
+    date: "July 2022 - November 2023",
+    title: "Building High-Throughput Travel Systems at RateGain",
+    summary: "Developed non-blocking Spring WebFlux services handling 30M+ daily requests, with Kafka-driven data synchronization and AWS EKS deployments.",
     image: "/images/blog1.png",
-    link: "https://jsmastery.com/blog/typescript-explained-what-it-is-why-it-matters-and-how-to-master-it",
   },
   {
     id: 2,
-    date: "Aug 28, 2025",
-    title: "The Ultimate Guide to Mastering Three.js for 3D Development",
+    date: "December 2023 - June 2025",
+    title: "Scaling PropertyHub for 10,000+ Concurrent Users",
+    summary: "Helped deliver a 99.9% uptime real-estate platform, improving search response time by 40% with Elasticsearch and adding Redis and RabbitMQ.",
     image: "/images/blog2.png",
-    link: "https://jsmastery.com/blog/the-ultimate-guide-to-mastering-three-js-for-3d-development",
   },
   {
     id: 3,
-    date: "Aug 15, 2025",
-    title: "The Ultimate Guide to Mastering GSAP Animations",
+    date: "August 2025 - June 2026",
+    title: "Full-Stack Performance Engineering at Daisyon Technologies",
+    summary: "Built Java, Spring Boot, React, and PostgreSQL applications while reducing average API response time by approximately 30%.",
     image: "/images/blog3.png",
-    link: "https://jsmastery.com/blog/the-ultimate-guide-to-mastering-gsap-animations",
   },
 ];
 
@@ -227,28 +277,43 @@ const socials = [
     text: "Github",
     icon: "/icons/github.svg",
     bg: "#f4656b",
-    link: "https://github.com/JavaScript-Mastery-Pro",
+    link: "https://github.com/FaizRabbani08",
   },
   {
     id: 2,
-    text: "Platform",
+    text: "Instagram",
     icon: "/icons/atom.svg",
     bg: "#4bcb63",
-    link: "https://jsmastery.com/",
+    link: "https://www.instagram.com/iammdfaizrabbani/",
   },
   {
     id: 3,
     text: "Twitter/X",
     icon: "/icons/twitter.svg",
     bg: "#ff866b",
-    link: "https://x.com/jsmasterypro",
+    link: "https://x.com/FazRabbani",
   },
   {
     id: 4,
     text: "LinkedIn",
     icon: "/icons/linkedin.svg",
     bg: "#05b6f6",
-    link: "https://www.linkedin.com/company/javascriptmastery/posts/?feedView=all",
+    link: "https://www.linkedin.com/in/mohammadfaizrabbani0786/",
+  },
+];
+
+export const CONTACT_NUMBERS = [
+  {
+    label: "Saudi Arabia",
+    display: "+966 535259714",
+    tel: "+966535259714",
+    whatsapp: "https://wa.me/966535259714",
+  },
+  {
+    label: "India",
+    display: "+91 9504586885",
+    tel: "+919504586885",
+    whatsapp: "https://wa.me/919504586885",
   },
 ];
 
@@ -283,19 +348,19 @@ const photosLinks = [
 const gallery = [
   {
     id: 1,
-    img: "/images/gal1.png",
+    img: "/images/gall1.jpeg",
   },
   {
     id: 2,
-    img: "/images/gal2.png",
+    img: "/images/gall2.jpeg",
   },
   {
     id: 3,
-    img: "/images/gal3.png",
+    img: "/images/gall3.mp4",
   },
   {
     id: 4,
-    img: "/images/gal4.png",
+    img: "/images/gall4.jpeg",
   },
 ];
 
@@ -487,30 +552,30 @@ const ABOUT_LOCATION = {
   children: [
     {
       id: 1,
-      name: "me.png",
+      name: "faiz.jpg",
       icon: "/images/image.png",
       kind: "file",
       fileType: "img",
       position: "top-10 left-5",
-      imageUrl: "/images/adrian.jpg",
+      imageUrl: "/images/faiz.jpg",
     },
     {
       id: 2,
-      name: "casual-me.png",
+      name: "faiz-2.jpeg",
       icon: "/images/image.png",
       kind: "file",
       fileType: "img",
       position: "top-28 right-72",
-      imageUrl: "/images/adrian-2.jpg",
+      imageUrl: "/images/faiz-2.jpeg",
     },
     {
       id: 3,
-      name: "conference-me.png",
+      name: "faiz-3.jpeg",
       icon: "/images/image.png",
       kind: "file",
       fileType: "img",
       position: "top-52 left-80",
-      imageUrl: "/images/adrian-3.jpeg",
+      imageUrl: "/images/faiz-3.jpeg",
     },
     {
       id: 4,
@@ -520,7 +585,7 @@ const ABOUT_LOCATION = {
       fileType: "txt",
       position: "top-60 left-5",
       subtitle: "Meet the Developer Behind the Code",
-      image: "/images/adrian.jpg",
+      image: "/images/faiz.jpg",
       description: [
         "Hey! I’m Adrian 👋, a web developer who enjoys building sleek, interactive websites that actually work well.",
         "I specialize in JavaScript, React, and Next.js—and I love making things feel smooth, fast, and just a little bit delightful.",

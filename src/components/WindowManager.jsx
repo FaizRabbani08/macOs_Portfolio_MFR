@@ -5,39 +5,15 @@ import Finder from "#windows/Finder";
 import Terminal from "#windows/Terminal";
 import VSCode from "#windows/VSCode";
 import Settings from "#windows/Settings";
+import FaizAI from "#windows/FaizAI";
+import { getApp } from "#constants/apps";
 
-const WINDOW_CONFIG = {
-  finder: {
-    title: "Portfolio",
-  },
-
-  safari: {
-    title: "Articles",
-  },
-
-  photos: {
-    title: "Gallery",
-  },
-
-  contact: {
-    title: "Contact",
-  },
-
-  terminal: {
-    title: "Skills",
-  },
-
-  search: {
-    title: "Spotlight Search",
-  },
-
-  vscode: {
-    title: "Visual Studio Code",
-  },
-
-  settings: {
-    title: "System Settings",
-  },
+const WINDOW_CONTENT = {
+  finder: Finder,
+  terminal: Terminal,
+  vscode: VSCode,
+  settings: Settings,
+  faizai: FaizAI,
 };
 
 const WindowManager = () => {
@@ -53,11 +29,13 @@ const WindowManager = () => {
             return null;
           }
 
-          const config = WINDOW_CONFIG[id];
+          const config = getApp(id);
 
           if (!config) {
             return null;
           }
+
+          const Content = WINDOW_CONTENT[config.view];
 
           return (
             <Window
@@ -65,7 +43,7 @@ const WindowManager = () => {
               id={id}
               title={config.title}
             >
-              {id === "finder" ? <Finder /> : id === "terminal" ? <Terminal /> : id === "vscode" ? <VSCode /> : id === "settings" ? <Settings /> : <PortfolioWindow type={id} />}
+              {Content ? <Content /> : config.view === "portfolio" ? <PortfolioWindow type={id} /> : null}
             </Window>
           );
         }

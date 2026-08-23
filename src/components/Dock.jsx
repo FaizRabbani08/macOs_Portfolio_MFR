@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { dockApps } from "#constants";
+import { dockApps } from "#constants/apps";
 import { Tooltip } from "react-tooltip";
 import { useWindowStore } from "#store/windowStore";
 

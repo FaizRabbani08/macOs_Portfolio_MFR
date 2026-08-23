@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import dayjs from "dayjs";
 
-import { navLinks, navIcons } from "#constants";
-const Navbar = ({ onOpen, onToggleTheme }) => {
+import { navLinks, navIcons } from "#constants/apps";
+const Navbar = ({ onOpen, onToggleTheme, onToggleControlCenter }) => {
     const [now, setNow] = useState(dayjs());
 
     useEffect(() => {
@@ -34,8 +34,8 @@ const Navbar = ({ onOpen, onToggleTheme }) => {
                                                 <button
                                                     type="button"
                                                     className="icon-button"
-                                                    onClick={() => id === 2 ? onOpen("search") : id === 4 ? onToggleTheme() : undefined}
-                                                    aria-label={id === 2 ? "Open Spotlight" : id === 4 ? "Toggle theme" : `System status ${id}`}
+                                                    onClick={() => id === 2 ? onOpen("search") : id === 3 ? onToggleControlCenter() : id === 4 ? onToggleTheme() : undefined}
+                                                    aria-label={id === 2 ? "Open Spotlight" : id === 3 ? "Open Control Center" : id === 4 ? "Toggle theme" : `System status ${id}`}
                                                 >
                                                     <img src={img} className="icon-hover" alt="" />
                                                 </button>

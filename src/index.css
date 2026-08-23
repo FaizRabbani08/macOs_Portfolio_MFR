@@ -575,6 +575,62 @@ body {
   @apply mt-1 text-sm text-sky-300;
 }
 
+.finder-entry-location {
+  @apply mt-1 text-xs text-white/50;
+}
+
+.finder-entry-overview {
+  @apply mt-4 max-w-3xl text-sm leading-relaxed text-white/75;
+}
+
+.finder-section {
+  @apply mt-6;
+}
+
+.finder-section > strong {
+  @apply text-sm font-semibold text-white;
+}
+
+.finder-section h4 {
+  @apply text-sm font-semibold text-white;
+}
+
+.finder-profile-role {
+  @apply !mt-1 text-sm font-medium text-sky-300;
+}
+
+.finder-specialties {
+  @apply mt-3 grid gap-3 sm:grid-cols-2;
+}
+
+.finder-specialties article {
+  @apply rounded-xl border border-white/10 bg-white/5 p-4;
+}
+
+.finder-specialties h5 {
+  @apply text-sm font-semibold text-sky-200;
+}
+
+.finder-specialties p {
+  @apply mt-2 text-sm leading-relaxed text-white/70;
+}
+
+.finder-capstone {
+  @apply mt-8 rounded-xl border border-sky-300/20 bg-sky-500/10 p-5;
+}
+
+.finder-capstone h4 {
+  @apply text-xs font-semibold uppercase tracking-wider text-sky-300;
+}
+
+.finder-capstone h5 {
+  @apply mt-2 text-lg font-bold text-white;
+}
+
+.finder-capstone > p:not(.finder-entry-meta) {
+  @apply mt-3 text-sm leading-relaxed text-white/75;
+}
+
 .finder-entry ul {
   @apply mt-3 space-y-2;
 }
@@ -584,7 +640,20 @@ body {
   @apply text-sm leading-relaxed text-white/70;
 }
 
+.finder-panel ul {
+  @apply mt-3 space-y-2;
+}
+
+.finder-panel li {
+  @apply text-sm leading-relaxed text-white/70;
+}
+
 .finder-entry li::before {
+  content: "• ";
+  @apply text-sky-300;
+}
+
+.finder-panel li::before {
   content: "• ";
   @apply text-sky-300;
 }
@@ -955,18 +1024,24 @@ body {
   .project-card span { @apply pb-3 pt-1 text-xs text-gray-400; }
 
   .article-list { @apply space-y-2; }
-  .article-row { @apply flex items-center gap-4 rounded-lg p-2 transition-colors hover:bg-gray-100; }
+  .article-row { @apply flex items-center gap-4 rounded-lg p-2; }
   .article-row img { @apply size-16 rounded-md object-cover; }
   .article-row span { @apply flex min-w-0 flex-1 flex-col gap-1; }
   .article-row small { @apply text-xs text-gray-400; }
   .article-row strong { @apply truncate text-sm text-gray-800; }
+  .article-row p { @apply text-xs leading-relaxed text-gray-500; }
   .article-row b { @apply text-lg text-gray-400; }
 
   .gallery-grid { @apply grid grid-cols-2 gap-3; }
-  .gallery-grid img { @apply aspect-[4/3] w-full rounded-lg object-cover transition-transform hover:scale-[1.02]; }
+  .gallery-grid img, .gallery-grid video { @apply aspect-[4/3] w-full rounded-lg object-cover transition-transform hover:scale-[1.02]; }
 
   .contact-content h3 { @apply max-w-md; }
   .email-link { @apply inline-block rounded-full bg-gray-900 px-5 py-3 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5; }
+  .phone-list { @apply mt-5 flex flex-wrap gap-3; }
+  .phone-row { @apply flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-3 py-2 text-xs; }
+  .phone-row span { @apply font-semibold text-gray-400; }
+  .phone-row a:first-of-type { @apply font-semibold text-gray-800; }
+  .phone-row a:last-child { @apply rounded-full bg-emerald-500 px-2 py-1 font-semibold text-white hover:bg-emerald-600; }
   .social-row { @apply mt-8 flex flex-wrap gap-3; }
   .social-row a { @apply rounded-full border border-gray-200 px-3 py-2 text-xs text-gray-600 hover:bg-gray-100; }
 
@@ -983,7 +1058,7 @@ body {
   .theme-dark .window-header h2, .theme-dark .window-content h3, .theme-dark .article-row strong { @apply text-gray-100; }
   .theme-dark .project-card { @apply border-gray-700 bg-gray-800; }
   .theme-dark .project-card span, .theme-dark .article-row small { @apply text-gray-400; }
-  .theme-dark .article-row:hover, .theme-dark .social-row a:hover { @apply bg-gray-800; }
+  .theme-dark .social-row a:hover { @apply bg-gray-800; }
   .theme-dark nav { @apply bg-gray-900/75 text-white; }
   .theme-dark nav time, .theme-dark nav ul button { @apply text-white; }
 
@@ -1004,6 +1079,162 @@ body {
   .mobile-dock { @apply mt-auto mb-4 flex items-center justify-between rounded-[2.5rem] border border-white/10 bg-white/20 p-4 shadow-2xl backdrop-blur-2xl; }
   .mobile-dock button { @apply cursor-pointer; }
 
+  .faiz-ai-app {
+    @apply flex min-h-full flex-col bg-slate-950/90 text-white;
+  }
+
+  .faiz-ai-header {
+    @apply flex items-center gap-2 border-b border-white/10 bg-sky-500/10 px-4 py-3 text-xs text-sky-200;
+  }
+
+  .faiz-ai-messages {
+    @apply flex-1 space-y-4 overflow-y-auto p-4;
+  }
+
+  .faiz-ai-message {
+    @apply flex max-w-[82%] items-start gap-3 rounded-2xl p-3 text-sm leading-relaxed;
+  }
+
+  .faiz-ai-message.assistant { @apply bg-white/10 text-white/90; }
+  .faiz-ai-message.user { @apply ml-auto bg-blue-600 text-white; }
+  .faiz-ai-message p { @apply m-0; }
+  .faiz-ai-thinking { @apply flex items-center gap-3 text-sm text-white/50; }
+
+  .faiz-ai-input-row {
+    @apply flex gap-2 border-t border-white/10 bg-black/20 p-4;
+  }
+
+  .faiz-ai-input-row input {
+    @apply min-w-0 flex-1 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white outline-none placeholder:text-white/40 focus:border-blue-500;
+  }
+
+  .faiz-ai-input-row button {
+    @apply rounded-full bg-blue-600 p-2 text-white transition-colors hover:bg-blue-500;
+  }
+
+  .control-center {
+    @apply fixed right-2 top-9 z-[2000] grid w-80 grid-cols-2 gap-3 rounded-2xl border border-white/20 bg-slate-900/85 p-4 text-white shadow-2xl backdrop-blur-2xl;
+  }
+
+  .control-tile,
+  .control-sliders,
+  .control-system-info {
+    @apply rounded-xl bg-white/10 p-3;
+  }
+
+  .control-tile { @apply flex flex-col gap-3; }
+  .control-tile > div,
+  .control-tile button { @apply flex items-center gap-3 text-left; }
+  .control-icon { @apply flex size-8 items-center justify-center rounded-full bg-blue-600; }
+  .control-tile p { @apply text-xs font-bold; }
+  .control-tile small { @apply block font-normal opacity-60; }
+  .control-sliders { @apply col-span-2 grid grid-cols-[auto_1fr] items-center gap-2; }
+  .control-system-info { @apply col-span-2 flex items-center gap-3 bg-gradient-to-br from-blue-600/40 to-purple-600/40 text-xs; }
+  .control-system-info svg { @apply text-yellow-400; }
+  .control-system-info small { @apply ml-auto text-[10px] opacity-60; }
+
+  .desktop-context-menu {
+    @apply fixed z-[5000] flex w-52 flex-col rounded-lg border border-white/10 bg-slate-900/85 py-2 text-[13px] text-white shadow-2xl backdrop-blur-2xl;
+  }
+
+  .desktop-context-menu button {
+    @apply cursor-pointer px-4 py-1.5 text-left transition-colors hover:bg-blue-600;
+  }
+
+  .desktop-context-menu hr { @apply my-1 w-full border-0 border-t border-white/10; }
+
+  .app-stage { @apply relative h-full w-full transition-all duration-700; }
+  .app-stage-locked { @apply scale-95 opacity-0 blur-2xl; }
+
+  .dynamic-notch-wrap {
+    @apply fixed left-1/2 top-0 z-[3000] -translate-x-1/2 pt-1;
+  }
+
+  .dynamic-notch {
+    @apply flex cursor-pointer items-center justify-center overflow-hidden rounded-3xl border border-white/5 bg-black text-white shadow-2xl;
+  }
+
+  .dynamic-notch-compact { @apply flex items-center gap-2 px-3; }
+  .dynamic-notch-compact > span { @apply size-1.5 animate-pulse rounded-full bg-green-500; }
+  .dynamic-notch-compact > b { @apply text-[10px] font-bold uppercase tracking-tighter opacity-80; }
+  .dynamic-notch-expanded { @apply flex w-full items-center justify-between gap-4 px-6; }
+  .dynamic-notch-expanded > div:first-child { @apply flex flex-col; }
+  .dynamic-notch-expanded small { @apply text-[10px] font-bold uppercase tracking-widest text-blue-400; }
+  .dynamic-notch-expanded strong { @apply text-xs font-medium; }
+  .dynamic-notch-stats { @apply flex gap-4; }
+  .dynamic-notch-stats > div { @apply flex flex-col items-center; }
+  .dynamic-notch-stats > div:nth-child(1) svg { @apply text-yellow-400; }
+  .dynamic-notch-stats > div:nth-child(2) svg { @apply text-red-400; }
+  .dynamic-notch-stats > div:nth-child(3) svg { @apply text-blue-400; }
+  .dynamic-notch-stats small { @apply mt-1 text-[8px] font-normal tracking-normal text-white/60; }
+
+  .lock-screen {
+    @apply fixed inset-0 z-[6000] flex flex-col items-center justify-between bg-black/40 py-20 text-white backdrop-blur-3xl;
+  }
+
+  .lock-clock { @apply text-center; }
+  .lock-clock h2 { @apply text-7xl font-thin tracking-tight md:text-8xl; }
+  .lock-clock p { @apply mt-2 text-xl font-light opacity-60; }
+  .lock-identity { @apply flex flex-col items-center gap-2; }
+  .lock-avatar { @apply flex size-16 items-center justify-center rounded-full bg-gradient-to-tr from-blue-600 to-purple-600 text-2xl font-bold; }
+  .lock-identity h1 { @apply text-center text-2xl font-medium; }
+  .lock-identity > p { @apply text-sm italic text-white/40; }
+  .lock-identity button { @apply mt-6 flex flex-col items-center gap-2 text-white/40 transition-colors hover:text-white; }
+  .lock-identity button span { @apply text-xs font-bold uppercase tracking-[0.3em]; }
+  .lock-skills { @apply flex gap-10 text-xs font-bold uppercase tracking-widest text-white/20; }
+
+  .mission-control-overlay {
+    @apply fixed inset-0 z-[4000] overflow-hidden p-10 md:p-20;
+  }
+
+  .mission-control-grid {
+    @apply flex h-full flex-wrap items-center justify-center gap-8 md:gap-10;
+  }
+
+  .mission-control-empty {
+    @apply text-2xl font-light italic text-white/40;
+  }
+
+  .mission-control-card {
+    @apply relative flex h-48 w-[min(300px,38vw)] cursor-pointer flex-col overflow-hidden rounded-xl border border-white/20 bg-white/10 text-white shadow-2xl transition-transform hover:scale-105;
+  }
+
+  .mission-control-card span {
+    @apply absolute left-1/2 top-2 -translate-x-1/2 rounded-full bg-black/50 px-4 py-1 text-sm font-medium capitalize opacity-0 transition-opacity;
+  }
+
+  .mission-control-card:hover span {
+    @apply opacity-100;
+  }
+
+  .mission-control-card strong {
+    @apply flex h-full items-center justify-center text-4xl uppercase opacity-40;
+  }
+
+  .launchpad-overlay {
+    @apply fixed inset-0 z-[4500] flex flex-col items-center bg-black/20 px-6 pt-16 backdrop-blur-3xl md:px-20;
+  }
+
+  .launchpad-search {
+    @apply relative mb-12 flex w-full max-w-md items-center gap-3 rounded-lg border border-white/10 bg-white/10 px-3 py-2 text-white/40;
+  }
+
+  .launchpad-search input {
+    @apply w-full bg-transparent text-sm text-white outline-none placeholder:text-white/40;
+  }
+
+  .launchpad-grid {
+    @apply grid w-full max-w-6xl grid-cols-3 gap-8 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-7 md:gap-12;
+  }
+
+  .launchpad-app {
+    @apply flex cursor-pointer flex-col items-center gap-3 text-white;
+  }
+
+  .launchpad-icon {
+    @apply flex size-20 items-center justify-center rounded-[1.5rem] text-white shadow-2xl;
+  }
+
   @media (max-width: 768px) {
     .desktop-view { display: none; }
     .portfolio-window {
@@ -1022,6 +1253,11 @@ body {
     .portfolio-window .window-content { max-height: calc(90vh - 44px); }
     .finder-sidebar, .settings-sidebar, .vscode-sidebar { width: 38%; }
     .settings-content { padding: 1.25rem; }
+    .mission-control-overlay { @apply p-4; }
+    .mission-control-card { @apply h-32 w-40; }
+    .launchpad-overlay { @apply px-5 pt-16; }
+    .launchpad-grid { @apply grid-cols-3 gap-6; }
+    .launchpad-icon { @apply size-16; }
   }
 
   @media (max-width: 640px) {
