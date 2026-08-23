@@ -2,6 +2,40 @@ import { create } from "zustand";
 
 export const useWindowStore = create((set) => ({
   windows: {},
+  bootComplete: false,
+  isLocked: true,
+  isSpotlightOpen: false,
+  isMissionControlOpen: false,
+  isLaunchpadOpen: false,
+
+  setBootComplete: (bootComplete) => set({ bootComplete }),
+  setLocked: (isLocked) => set({ isLocked }),
+  notchContent: "system",
+  setNotchContent: (notchContent) => set({ notchContent }),
+
+  toggleSpotlight: () =>
+    set((state) => ({ isSpotlightOpen: !state.isSpotlightOpen })),
+
+  closeSpotlight: () => set({ isSpotlightOpen: false }),
+
+  toggleMissionControl: () =>
+    set((state) => ({
+      isMissionControlOpen: !state.isMissionControlOpen,
+      isLaunchpadOpen: false,
+    })),
+
+  toggleLaunchpad: () =>
+    set((state) => ({
+      isLaunchpadOpen: !state.isLaunchpadOpen,
+      isMissionControlOpen: false,
+    })),
+
+  closeSpecialViews: () =>
+    set({
+      isMissionControlOpen: false,
+      isLaunchpadOpen: false,
+      isSpotlightOpen: false,
+    }),
 
   openWindow: (id) =>
     set((state) => {

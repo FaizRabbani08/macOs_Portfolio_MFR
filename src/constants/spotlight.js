@@ -18,6 +18,12 @@ export const spotlightItems = [
     icon: "/images/terminal.png",
   },
   {
+    id: "vscode",
+    title: "VS Code",
+    description: "Explore Spring Boot and React source code",
+    icon: "/images/vscode.webp",
+  },
+  {
     id: "photos",
     title: "Gallery",
     description: "View my visual work",
@@ -28,5 +34,11 @@ export const spotlightItems = [
     title: "Contact",
     description: "Let's work together",
     icon: "/images/contact.png",
+  },
+  {
+    id: "faizai",
+    title: "FaizAI",
+    description: "Ask about Mohammad's engineering experience",
+    icon: "/images/faizai.png",
   },
 ];

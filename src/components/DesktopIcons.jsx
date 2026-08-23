@@ -1,4 +1,4 @@
-import { dockApps } from '#constants'
+import { dockApps } from '#constants/apps'
 
 const DesktopIcons = ({ onOpen }) => (
 	<section className="desktop-icons" aria-label="Desktop applications">

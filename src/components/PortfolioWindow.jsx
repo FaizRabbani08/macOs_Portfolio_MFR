@@ -1,9 +1,7 @@
-import {
-  blogPosts,
-  gallery,
-  socials,
-  techStack,
-} from "#constants";
+import { blogPosts } from "#constants/projects";
+import { CONTACT_NUMBERS, socials } from "#constants/socials";
+import { gallery } from "#constants/gallery";
+import { techStack } from "#constants/skills";
 
 const PortfolioWindow = ({ type }) => {
   return (
@@ -57,15 +55,12 @@ const PortfolioWindow = ({ type }) => {
       {type === "safari" && (
         <div className="article-list">
           <p className="window-eyebrow">
-            From the notebook
+            Career highlights
           </p>
 
           {blogPosts.map((post) => (
-            <a
+            <article
               className="article-row"
-              href={post.link}
-              target="_blank"
-              rel="noreferrer"
               key={post.id}
             >
               <img
@@ -76,10 +71,10 @@ const PortfolioWindow = ({ type }) => {
               <span>
                 <small>{post.date}</small>
                 <strong>{post.title}</strong>
+                <p>{post.summary}</p>
               </span>
 
-              <b>↗</b>
-            </a>
+            </article>
           ))}
         </div>
       )}
@@ -88,11 +83,17 @@ const PortfolioWindow = ({ type }) => {
       {type === "photos" && (
         <div className="gallery-grid">
           {gallery.map((photo) => (
-            <img
-              src={photo.img}
-              alt="Portfolio memory"
-              key={photo.id}
-            />
+            photo.img.endsWith(".mp4") ? (
+              <video autoPlay muted loop playsInline key={photo.id}>
+                <source src={photo.img} type="video/mp4" />
+              </video>
+            ) : (
+              <img
+                src={photo.img}
+                alt="Portfolio memory"
+                key={photo.id}
+              />
+            )
           ))}
         </div>
       )}
@@ -110,10 +111,20 @@ const PortfolioWindow = ({ type }) => {
 
           <a
             className="email-link"
-            href="mailto:hello@example.com"
+            href="mailto:faizrabbani08n@gmail.com"
           >
-            hello@example.com
+            faizrabbani08n@gmail.com
           </a>
+
+          <div className="phone-list" aria-label="Phone and WhatsApp contact options">
+            {CONTACT_NUMBERS.map((number) => (
+              <div className="phone-row" key={number.tel}>
+                <span>{number.label}</span>
+                <a href={`tel:${number.tel}`}>{number.display}</a>
+                <a href={number.whatsapp} target="_blank" rel="noreferrer">WhatsApp ↗</a>
+              </div>
+            ))}
+          </div>
 
           <div className="social-row">
             {socials.map((social) => (
